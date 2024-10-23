@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Login.css'; // Menggunakan file CSS yang sama dengan Login, jika kamu mau
+import '../assets/static/Login.css';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
@@ -19,7 +19,7 @@ const ForgotPassword = () => {
   return (
     <div className="login-container">
       <div className="login-card">
-        <h2>Forgot Password</h2>
+        <h2 className="login-title">Forgot Password</h2>
         <div className="input-group">
           <input 
             type="email" 
@@ -30,7 +30,7 @@ const ForgotPassword = () => {
           />
         </div>
         <button onClick={handleForgotPassword} className="login-button">Send Reset Link</button>
-        <p className="forgot-password-link">
+        <p className="register-link">
           <a href="/login">Back to Login</a>
         </p>
       </div>

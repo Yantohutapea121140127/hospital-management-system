@@ -3,37 +3,32 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const app = express();
+const PORT = 5000;
+
 app.use(cors());
 app.use(bodyParser.json());
 
-const users = [
-  { email: 'admin@example.com', password: 'admin12345' } // Dummy credential
-];
-
 app.post('/login', (req, res) => {
-  const { email, password } = req.body;
-  const user = users.find(u => u.email === email && u.password === password);
-  if (user) {
-    res.json({ success: true, token: 'hospital-system-token' });
-  } else {
-    res.json({ success: false, message: 'Invalid credentials' });
-  }
+  const { username, password } = req.body;
+  // Logika autentikasi
+  console.log('Login attempt:', { username, password });
+  res.json({ message: 'Login success' });
 });
 
 app.post('/register', (req, res) => {
-  const { email, password } = req.body;
-  users.push({ email, password });
-  res.json({ success: true, message: 'User registered successfully' });
+  const { username, password } = req.body;
+  // Logika pendaftaran
+  console.log('Register attempt:', { username, password });
+  res.json({ message: 'Register success' });
 });
 
 app.post('/forgot-password', (req, res) => {
   const { email } = req.body;
-  const user = users.find(u => u.email === email);
-  if (user) {
-    res.json({ message: 'Password reset link sent to email' });
-  } else {
-    res.json({ message: 'Email not found' });
-  }
+  // Logika forgot password
+  console.log('Forgot password attempt:', { email });
+  res.json({ message: 'Reset link sent' });
 });
 
-app.listen(5000, () => console.log('Server running on port 5000'));
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});

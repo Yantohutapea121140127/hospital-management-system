@@ -1,0 +1,122 @@
+/* Container for the whole login page */
+.login-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  background-color: #e8e8e8;
+  padding: 0 100px;
+}
+
+/* Container for the logo */
+.login-logo img {
+  width: 600px; /* Adjust the logo size if necessary */
+  margin-left: 20px; /* Adjust spacing if needed */
+}
+
+/* Styling for the login form card */
+.login-card {
+  background-color: #e9e9e9;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 400px;
+}
+
+/* Center the title text */
+.login-title {
+  font-family: Poppins, sans-serif;
+  font-weight: 600;
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+/* Styling for input fields */
+.input-group {
+  margin-bottom: 20px;
+}
+
+.login-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Role selector styles */
+.role-selector {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+/* Remember me checkbox */
+.remember-me {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Sign in button styling */
+.login-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+}
+
+/* Forgot password and register links */
+.forgot-password-link, .register-link {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.forgot-password-link a, .register-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.forgot-password-link a:hover, .register-link a:hover {
+  text-decoration: underline;
+}
+
+
+@media (max-width: 1024px) {
+  .login-container {
+    flex-direction: column;
+    padding: 0 50px;
+  }
+
+  .login-logo img {
+    width: 50%;
+    margin-left: 0;
+  }
+
+  .login-card {
+    width: 90%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .login-container {
+    padding: 0 150px;
+  }
+
+  .login-logo img {
+    width: 40vw;
+  }
+
+  .login-card {
+    width: 400px; /* Membatasi ukuran card */
+  }
+}
