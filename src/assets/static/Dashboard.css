@@ -7,36 +7,61 @@
 /* Sidebar Navigation */
 .sidebar {
   width: 200px;
-  background-color: rgb(243, 242, 242);
+  background-color: #DFF2EB;
   padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar-header {
-  text-align: center;
-  color: rgb(0, 0, 0);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, transparent 60%, #00a8ce 20%, #4f81ff 60%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
 
 .sidebar-menu {
   list-style: none;
-  padding: 0;
+  padding: 10px;
 }
 
 .sidebar-menu li {
-  margin: 20px 0;
+  margin: 15px 0;
   text-align: left;
 }
 
 .sidebar-menu a {
   color: rgb(123, 123, 123);
   text-decoration: none;
-  display: block;
+  display: flex;
+  align-items: center;
   padding: 10px;
-  border-radius: 4px;
-  transition: background-color 0.3s;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar-menu a .fa-icon {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 20px;
+  font-size: 1.2em;
+}
+
+.sidebar-menu a.active {
+  font-weight: 600;
+  color: #0084ff;
+  background-color: #c4dcec;
+  transform: scale(1.05);
 }
 
 .sidebar-menu a:hover {
-  background-color: #92c2f2;
+  color: white;
+  background-color: #000000;
+  transform: scale(1.05);
 }
 
 /* Main Content */
@@ -82,6 +107,11 @@
   text-align: center;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.attendance-cards .card:hover {
+  transform: scale(1.05);
 }
 
 .attendance-list h3 {
@@ -118,6 +148,7 @@
   color: white;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .pagination button:hover {

@@ -1,44 +1,69 @@
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHouse, faUsers, faClipboardCheck, faPills, faMoneyCheckAlt, faBuilding, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
-import React from 'react';
+import { faHouseMedical, faUsers, faClipboardCheck, faBriefcaseMedical, faMoneyBill, faLandmark, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 import '../assets/static/Dashboard.css';
 
 const Dashboard = () => {
+  const [activeMenu, setActiveMenu] = useState("/dashboard");
+
+  const handleMenuClick = (menu) => {
+    setActiveMenu(menu);
+  };
+
   return (
     <div className="dashboard-layout">
       <nav className="sidebar">
-        <div className="sidebar-header">
-          <h2>Menu</h2>
-        </div>
+        <div className="sidebar-header"></div>
         <ul className="sidebar-menu">
           <li>
-            <a class="active" href="/dashboard">
-            <FontAwesomeIcon icon={faHouse} /> Dashboard
-            </a>
+            <Link 
+            className={activeMenu === "/dashboard" ? 'active' : ''} 
+            to="/dashboard"
+            onClick={() => handleMenuClick("/dashboard")}>
+            <FontAwesomeIcon icon={faHouseMedical} className="fa-icon" /> Dashboard</Link>
           </li>
           <li>
-            <a href="/karyawan">
-            <FontAwesomeIcon icon={faUsers} /> Karyawan</a>
+            <Link
+            className={activeMenu === "/karyawan" ? 'active' : ''}
+            to="/karyawan"
+            onClick={() => handleMenuClick("/karyawan")}>
+            <FontAwesomeIcon icon={faUsers} className="fa-icon" /> Karyawan</Link>
           </li>
           <li>
-            <a href="/kehadiran">
-            <FontAwesomeIcon icon={faClipboardCheck} /> Kehadiran Karyawan</a>
+            <Link
+            className={activeMenu === "/kehadiran" ? 'active' : ''} 
+            to="/kehadiran"
+            onClick={() => handleMenuClick("/kehadiran")}>
+            <FontAwesomeIcon icon={faClipboardCheck} className="fa-icon" /> Kehadiran Karyawan</Link>
           </li>
           <li>
-            <a href="/obat">
-            <FontAwesomeIcon icon={faPills} /> Obat</a>
+            <Link
+            className={activeMenu === "/obat" ? 'active' : ''}
+            to="/obat"
+            onClick={() => handleMenuClick("/obat")}>
+            <FontAwesomeIcon icon={faBriefcaseMedical} className="fa-icon" /> Obat</Link>
           </li>
           <li>
-            <a href="/payroll">
-            <FontAwesomeIcon icon={faMoneyCheckAlt} />Payroll</a>
+            <Link
+            className={activeMenu === "/payroll" ? 'active' : ''}
+            to="/payroll"
+            onClick={() => handleMenuClick("/payroll")}>
+            <FontAwesomeIcon icon={faMoneyBill} className="fa-icon" /> Payroll</Link>
           </li>
           <li>
-            <a href="/company">
-            <FontAwesomeIcon icon={faBuilding} />Company</a>
+            <Link 
+            className={activeMenu === "/company" ? 'active' : ''} 
+            to="/company"
+            onClick={() => handleMenuClick("/company")}>
+            <FontAwesomeIcon icon={faLandmark} className="fa-icon" /> Company</Link>
           </li>
           <li>
-            <a href="/logout">
-            <FontAwesomeIcon icon={faSignOutAlt} /> Log Out</a>
+            <Link 
+            className={activeMenu === "/logout" ? 'active' : ''} 
+            to="/logout"
+            onClick={() => handleMenuClick("/logout")}>
+            <FontAwesomeIcon icon={faSignOutAlt} className="fa-icon" /> Logout</Link>
           </li>
         </ul>
       </nav>

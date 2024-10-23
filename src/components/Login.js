@@ -3,27 +3,36 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../assets/static/Login.css'; 
 import img from '../assets/img/logoklinik.png';
+import Register from './Register';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/login', { email, password });
+      const response = await axios.post('http://localhost:5000/login', { username, password });
       
       if (response.data.token) {
-        // Save token to local storage or context
+        // Save token to local storage
         localStorage.setItem('authToken', response.data.token);
+        // Redirect to dashboard
         navigate('/dashboard');
       } else {
-        alert('Login failed. Invalid credentials.');
+        setError('Invalid credentials. Please try again.');
       }
     } catch (error) {
-      alert('Login failed. Invalid credentials.');
+      // Menangani error saat login
+      setError('Invalid credentials or server error. Please try again.');
     }
   };
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  }
 
   return (
     <div className="login-container">
@@ -31,14 +40,15 @@ const Login = () => {
         <img src={img} alt="Logo" />
       </div>
       <div className="login-card">
-        <h2 className="login-title">Login</h2>
+        <h2 className="login-title">Sign In</h2>
         <div className="input-group">
           <input 
             type="text" 
             placeholder="Username" 
-            value={email} 
-            onChange={e => setEmail(e.target.value)} 
+            value={username} 
+            onChange={e => setUsername(e.target.value)} 
             className="login-input"
+            required
           />
         </div>
         <div className="input-group">
@@ -48,20 +58,17 @@ const Login = () => {
             value={password} 
             onChange={e => setPassword(e.target.value)} 
             className="login-input"
+            required
           />
         </div>
-        <div className="remember-me">
-          <input type="checkbox" />
-          <label>Remember me</label>
-        </div>
+        {error && <p className="error-message">{error}</p>}
         <button onClick={handleLogin} className="login-button">Sign in</button>
-        <p className="forgot-password-link">
-          <a href="/forgot-password">Forgot password?</a>
-        </p>
         <p className="register-link">
-          Don't have an account? <a href="/register">Register here</a>
+          Don't have an account? <button onClick={toggleModal} className="register-button">Sign Up</button>
         </p>
       </div>
+
+      <Register isOpen={isModalOpen} onClose={toggleModal} />
     </div>
   );
 };
